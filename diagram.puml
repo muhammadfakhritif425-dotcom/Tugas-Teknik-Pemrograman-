@@ -1,0 +1,54 @@
+@startuml diagram.png
+
+package "id.ac.polban.employee.model" {
+
+class Employee {
+- id : int
+- name : String
+- department : Department
+- type : EmploymentType
+- salary : double
+- totalEmployee : int {static}
++ getId() : int
++ setId(int)
++ getName() : String
++ setName(String)
++ getDepartment() : Department
++ setDepartment(Department)
++ getType() : EmploymentType
++ setType(EmploymentType)
++ getSalary() : double
++ setSalary(double)
++ getTotalEmployee() : int
+}
+
+class Department {
+- name : String
++ getName() : String
++ setName(String)
+}
+
+class EmploymentType {
+- type : String
++ getType() : String
++ setType(String)
+}
+
+}
+
+package "id.ac.polban.employee.service" {
+
+class EmployeeService {
+- employees : Map<Integer, Employee>
++ addEmployee(Employee)
++ getEmployee(int) : Employee
++ raiseSalary(int, double)
+}
+
+}
+
+Employee o-- Department
+Employee o-- EmploymentType
+EmployeeService ..> Employee
+
+@enduml
